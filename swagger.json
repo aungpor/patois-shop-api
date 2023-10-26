@@ -1,0 +1,3667 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0.1",
+    "title": "PATOIS",
+    "description": "PATOIS API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "prd-patois-api-asv.azurewebsites.net",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "PATOIS",
+      "description": "API for patois in the system"
+    }
+  ],
+  "schemes": ["https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+
+  "paths": {
+    "/api/auth/userchecked": {
+      "post": {
+        "tags": ["Auth"],
+        "security": {
+          "Bearer": []
+        },
+        "summary": "For Check user existing",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "The model of user encrypt properties",
+            "schema": {
+              "$ref": "#/definitions/UsersCheckRequestCipherText"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserChecksResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Login patois",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "required": true,
+            "description": "The model of user encrypt properties",
+            "schema": {
+              "$ref": "#/definitions/UsersCheckRequestCipherText"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserLoginsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/register": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Register patois",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "required": true,
+            "description": "The model of user encrypt properties",
+            "schema": {
+              "$ref": "#/definitions/UserRegistersRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserLoginsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/token": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Token patois",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "required": true,
+            "description": "The model of refresh_token properties",
+            "schema": {
+              "$ref": "#/definitions/TokensRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserLoginsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/check/token": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Check token of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CheckTokensResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/activity/shopsHit": {
+      "get": {
+        "tags": ["Activity"],
+        "summary": "Shop hit of patois",
+        "parameters": [
+          {
+            "name": "lat",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of lat",
+            "type": "string"
+          },
+          {
+            "name": "lng",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of lng",
+            "type": "string"
+          },
+          {
+            "name": "pageNumber",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of pageNumber",
+            "type": "string"
+          },
+          {
+            "name": "rowsOfPage",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of rowsOfPage",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ActivityShopHitResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/activity/shopsNearby": {
+      "get": {
+        "tags": ["Activity"],
+        "summary": "Shop nearby of patois",
+        "parameters": [
+          {
+            "name": "lat",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of lat",
+            "type": "string"
+          },
+          {
+            "name": "lng",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of lng",
+            "type": "string"
+          },
+          {
+            "name": "pageNumber",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of pageNumber",
+            "type": "string"
+          },
+          {
+            "name": "rowsOfPage",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of rowsOfPage",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ActivityShopHitResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/activity": {
+      "post": {
+        "tags": ["Activity"],
+        "summary": "Add activity of patois",
+        "parameters": [
+          {
+            "name": "activity",
+            "in": "body",
+            "required": true,
+            "description": "The model of activity properties",
+            "schema": {
+              "$ref": "#/definitions/ActivitysRequest"
+            }
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ActivityShopHitsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/activityAuth": {
+      "post": {
+        "tags": ["Activity"],
+        "summary": "Add activityAuth of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "activity",
+            "in": "body",
+            "required": true,
+            "description": "The model of activityAuth properties",
+            "schema": {
+              "$ref": "#/definitions/ActivitysRequest"
+            }
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ActivityShopHitsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/errorlog": {
+      "post": {
+        "tags": ["ErrorLog"],
+        "summary": "Add error log of patois",
+        "parameters": [
+          {
+            "name": "errorLog",
+            "in": "body",
+            "required": true,
+            "description": "The model of errorLog properties",
+            "schema": {
+              "$ref": "#/definitions/ErrorLogsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ErrorLogsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/errorlogAuth": {
+      "post": {
+        "tags": ["ErrorLog"],
+        "summary": "Add error log authen of patois",
+        "parameters": [
+          {
+            "name": "errorLog",
+            "in": "body",
+            "required": true,
+            "description": "The model of errorLogAuth properties",
+            "schema": {
+              "$ref": "#/definitions/ErrorLogsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ErrorLogsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/email/account/verification/check": {
+      "post": {
+        "tags": ["Email"],
+        "summary": "Check verification code of patois",
+        "parameters": [
+          {
+            "name": "verificationCheck",
+            "in": "body",
+            "required": true,
+            "description": "The model of user encrypt properties",
+            "schema": {
+              "$ref": "#/definitions/UsersCheckRequestCipherText"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CheckVerificationCodesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/email/account/verification": {
+      "post": {
+        "tags": ["Email"],
+        "summary": "Create verification code of patois",
+        "parameters": [
+          {
+            "name": "verification",
+            "in": "body",
+            "required": true,
+            "description": "The model of user encrypt properties",
+            "schema": {
+              "$ref": "#/definitions/UsersCheckRequestCipherText"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CreateVerificationCodesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/email/account/verification/complete": {
+      "post": {
+        "tags": ["Email"],
+        "summary": "Create verification code complete of patois",
+        "parameters": [
+          {
+            "name": "verification",
+            "in": "body",
+            "required": true,
+            "description": "The model of user encrypt properties",
+            "schema": {
+              "$ref": "#/definitions/UsersCheckRequestCipherText"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CreateVerificationCodesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/email/account/reset/password": {
+      "post": {
+        "tags": ["Email"],
+        "summary": "Reset password of patois",
+        "parameters": [
+          {
+            "name": "resetPassword",
+            "in": "body",
+            "required": true,
+            "description": "The model of user encrypt properties",
+            "schema": {
+              "$ref": "#/definitions/UsersCheckRequestCipherText"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResetPasswordsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/email/account/reset/password/check/:id": {
+      "get": {
+        "tags": ["Email"],
+        "summary": "Check refCode of patois",
+        "parameters": [
+          {
+            "name": "refCode",
+            "in": "path",
+            "required": true,
+            "description": "The param of refCode properties",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CheckRefCodesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/email/account/reset/password/complete": {
+      "post": {
+        "tags": ["Email"],
+        "summary": "Reset password complete of patois",
+        "parameters": [
+          {
+            "name": "resetPasswordComplete",
+            "in": "body",
+            "required": true,
+            "description": "The model of resetPasswordComplete properties",
+            "schema": {
+              "$ref": "#/definitions/UserRegistersRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResetPasswordsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/email/account/verification/:id": {
+      "put": {
+        "tags": ["Email"],
+        "summary": "Update verification status of patois",
+        "parameters": [
+          {
+            "name": "verificationId",
+            "in": "path",
+            "required": true,
+            "description": "The param of updateVerificationStatus properties",
+            "type": "string"
+          },
+          {
+            "name": "resetPassword",
+            "in": "body",
+            "required": true,
+            "description": "The model of user encrypt properties",
+            "schema": {
+              "$ref": "#/definitions/ResetPasswordsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CheckVerificationCodesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/email/account/reset/password/:id": {
+      "put": {
+        "tags": ["Email"],
+        "summary": "Update reset password status of patois",
+        "parameters": [
+          {
+            "name": "refCode",
+            "in": "path",
+            "required": true,
+            "description": "The param of refCode",
+            "type": "string"
+          },
+          {
+            "name": "resetPassword",
+            "in": "body",
+            "required": true,
+            "description": "The model of resetPassword  properties",
+            "schema": {
+              "$ref": "#/definitions/UsersCheckRequestCipherText"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CheckRefCodesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/favorites": {
+      "post": {
+        "tags": ["Favorites"],
+        "summary": "Favorites of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of lat",
+            "type": "string"
+          },
+          {
+            "name": "lng",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of lng",
+            "type": "string"
+          },
+          {
+            "name": "pageNumber",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of pageNumber",
+            "type": "string"
+          },
+          {
+            "name": "rowsOfPage",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of rowsOfPage",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/FavoritesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/image/view": {
+      "get": {
+        "tags": ["Image"],
+        "summary": "View image of patois",
+        "parameters": [
+          {
+            "name": "fileName",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of fileName",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ViewImagesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/image/upload": {
+      "post": {
+        "tags": ["Image"],
+        "summary": "View image of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "upfile",
+            "in": "formData",
+            "required": true,
+            "description": "The file to upload",
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UploadImagesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/location": {
+      "post": {
+        "tags": ["Location"],
+        "summary": "Add location of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "location",
+            "in": "body",
+            "required": true,
+            "description": "The model of location properties",
+            "schema": {
+              "$ref": "#/definitions/LocationsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LocationsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/location/edit/:id": {
+      "put": {
+        "tags": ["Location"],
+        "summary": "Update location of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "locationId",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of locationId",
+            "type": "string"
+          },
+          {
+            "name": "location",
+            "in": "body",
+            "required": true,
+            "description": "The model of location properties",
+            "schema": {
+              "$ref": "#/definitions/LocationEditsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LocationEditsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/location/shop/:id": {
+      "put": {
+        "tags": ["Location"],
+        "summary": "Update location of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "locationId",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of locationId",
+            "type": "string"
+          },
+          {
+            "name": "location",
+            "in": "body",
+            "required": true,
+            "description": "The model of location properties",
+            "schema": {
+              "$ref": "#/definitions/LocationEditShopIdsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LocationEditShopIdsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/customer/bot/webhook": {
+      "post": {
+        "tags": ["Line"],
+        "summary": "Sent notification line of patois",
+        "parameters": [
+          {
+            "name": "webhook",
+            "in": "body",
+            "required": true,
+            "description": "The model of webhook properties",
+            "schema": {
+              "$ref": "#/definitions/WebhooksRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WebhooksResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/menu/profile": {
+      "get": {
+        "tags": ["Menu"],
+        "summary": "Get menu profile of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MenuProfilesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/maxcard/check": {
+      "get": {
+        "tags": ["Maxcard"],
+        "summary": "Check maxcard of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "maxCardNo",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of maxCardNo",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MaxcardChecksResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/maxcard/info": {
+      "get": {
+        "tags": ["Maxcard"],
+        "summary": "Get maxcard information of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MaxcardChecksResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/maxcard/profile/maxcardId": {
+      "get": {
+        "tags": ["Maxcard"],
+        "summary": "Get profile by maxcard id of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "maxcardId",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of maxcardId",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MaxcardProfilesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/maxcard/profile/phone": {
+      "get": {
+        "tags": ["Maxcard"],
+        "summary": "Get profile by phone of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "phoneNo",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of phoneNo",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MaxcardProfilesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/maxcard/reward/point": {
+      "post": {
+        "tags": ["Maxcard"],
+        "summary": "Earn point of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "CrmRewardPoint",
+            "in": "body",
+            "required": true,
+            "description": "The model of crmRewardPoint properties",
+            "schema": {
+              "$ref": "#/definitions/EarnPointsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/EarnPointsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/maxcard/bind": {
+      "post": {
+        "tags": ["Maxcard"],
+        "summary": "Bind maxcard of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "maxcard",
+            "in": "body",
+            "required": true,
+            "description": "The model of maxcard properties",
+            "schema": {
+              "$ref": "#/definitions/EarnPointsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PatoisMaxcardsRequest"
+            }
+          }
+        }
+      }
+    },
+    "/api/maxcard/status/:id": {
+      "put": {
+        "tags": ["Maxcard"],
+        "summary": "Update maxcard status of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "maxcardId",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of maxcardId",
+            "type": "string"
+          },
+          {
+            "name": "maxcard",
+            "in": "body",
+            "required": true,
+            "description": "The model of maxcard properties",
+            "schema": {
+              "$ref": "#/definitions/EarnPointsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MaxcardInfoResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/master/bistro/shoptypes": {
+      "get": {
+        "tags": ["Master Shop"],
+        "summary": "Get shop type of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ShopTypesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/master/bistro/shopsizes": {
+      "get": {
+        "tags": ["Master Shop"],
+        "summary": "Get shop sizes of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ShopSizesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/master/bistro/foodtypes": {
+      "get": {
+        "tags": ["Master Shop"],
+        "summary": "Get food types of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/FoodTypesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/master/bistro/pricerangs": {
+      "get": {
+        "tags": ["Master Shop"],
+        "summary": "Get price rangs of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PriceRangsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/master/bistro/openweekdays": {
+      "get": {
+        "tags": ["Master Shop"],
+        "summary": "Get open weekdays of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OpenWeekDaysResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/master/bistro/timerangs": {
+      "get": {
+        "tags": ["Master Shop"],
+        "summary": "Get timerangs of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TimerangsResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/api/merchant/shoptypes": {
+      "get": {
+        "tags": ["Merchant"],
+        "summary": "Get PATOIS by juristicId",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of userId",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/USERS"
+            }
+          }
+        }
+      }
+    },
+
+    "/api/notification": {
+      "get": {
+        "tags": ["Notification"],
+        "summary": "Get notification of patois",
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of pageNumber",
+            "type": "string"
+          },
+          {
+            "name": "rowsOfPage",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of rowsOfPage",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/NotificationsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/notification/coupon/:promoId": {
+      "get": {
+        "tags": ["Notification"],
+        "summary": "Get coupon by promo id of patois",
+        "parameters": [
+          {
+            "name": "promoId",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of promoId",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CouponsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/notificationAuth": {
+      "get": {
+        "tags": ["Notification"],
+        "summary": "Get notification authentication of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pageNumber",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of pageNumber",
+            "type": "string"
+          },
+          {
+            "name": "rowsOfPage",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of rowsOfPage",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/NotificationsResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/api/patois-event/events": {
+      "get": {
+        "tags": ["Patois Event"],
+        "summary": "Get event of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/EventsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/patois-event/shop": {
+      "post": {
+        "tags": ["Patois Event"],
+        "summary": "Get shop of patois",
+        "parameters": [
+          {
+            "name": "shopName",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of shopName",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/EventShopsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/patois-event/checkevent": {
+      "get": {
+        "tags": ["Patois Event"],
+        "summary": "Check event of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CheckEventsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/patois-event/matching": {
+      "post": {
+        "tags": ["Patois Event"],
+        "summary": "Matching promo code of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "type": "string"
+          },
+          {
+            "name": "merchantId",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of merchantId",
+            "type": "string"
+          },
+          {
+            "name": "shopId",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of shopId",
+            "type": "string"
+          },
+          {
+            "name": "promoCode",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of promoCode",
+            "type": "string"
+          },
+          {
+            "name": "reviewScore",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of reviewScore",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MatchingsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/patois-event/matching/events": {
+      "post": {
+        "tags": ["Patois Event"],
+        "summary": "Matching promo code event of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "type": "string"
+          },
+          {
+            "name": "promoCode",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of promoCode",
+            "type": "string"
+          },
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of eventId",
+            "type": "string"
+          },
+          {
+            "name": "reviewScore",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of reviewScore",
+            "type": "string"
+          },
+          {
+            "name": "merchant_id",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of merchant_id",
+            "type": "string"
+          },
+          {
+            "name": "shop_id",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of shop_id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MatchingsResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/api/pdpa": {
+      "get": {
+        "tags": ["PDPA"],
+        "summary": "Get pdpa of patois",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PdpasResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/api/referral/refcode": {
+      "get": {
+        "tags": ["Referral"],
+        "summary": "Get referral code of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ReferralsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/searchs": {
+      "get": {
+        "tags": ["Search"],
+        "summary": "Search of patois",
+        "parameters": [
+          {
+            "name": "lat",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of lat",
+            "type": "string"
+          },
+          {
+            "name": "lng",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of lng",
+            "type": "string"
+          },
+          {
+            "name": "text",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of text",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SearchsResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/api/sms/check/otp": {
+      "get": {
+        "tags": ["SMS"],
+        "summary": "Check otp of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CheckOtpsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/sms/check/otp/:id": {
+      "get": {
+        "tags": ["SMS"],
+        "summary": "Check otp no of patois",
+        "parameters": [
+          {
+            "name": "otpNo",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of otpNo",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CheckOtpsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/sms/account/reset/password/check/:id": {
+      "get": {
+        "tags": ["SMS"],
+        "summary": "Check ref code no of patois",
+        "parameters": [
+          {
+            "name": "refCode",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of refCode",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CheckRefCodesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/sms/send": {
+      "post": {
+        "tags": ["SMS"],
+        "summary": "Check ref code no of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sms",
+            "in": "body",
+            "required": true,
+            "description": "The model of sms properties",
+            "schema": {
+              "$ref": "#/definitions/OtpsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OtpsResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/api/shops": {
+      "get": {
+        "tags": ["Shop"],
+        "summary": "Get shops of patois",
+        "parameters": [
+          {
+            "name": "lat",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of lat",
+            "type": "string"
+          },
+          {
+            "name": "lng",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of lng",
+            "type": "string"
+          },
+          {
+            "name": "filter",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of filter",
+            "type": "string"
+          },
+          {
+            "name": "text",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of text",
+            "type": "string"
+          },
+          {
+            "name": "pageNumber",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of pageNumber",
+            "type": "string"
+          },
+          {
+            "name": "rowsOfPage",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of rowsOfPage",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ShopsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/user/{id}": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Get user profile of patois",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserProfilesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/visits": {
+      "get": {
+        "tags": ["Visits"],
+        "summary": "Get PATOIS by juristicId",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "please fill out of userId",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/USERS"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "USER": {
+      "properties": {
+        "users": {
+          "type": "object",
+          "properties": {
+            "lineid": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "tel": {
+              "type": "string"
+            },
+            "picture": {
+              "type": "string"
+            },
+            "provider": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "UserRegisterRequest": {
+      "properties": {
+        "lineid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "tel": {
+          "type": "string"
+        },
+        "picture": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "TokenRequest": {
+      "properties": {
+        "refresh_token": {
+          "type": "string"
+        }
+      }
+    },
+    "UserCheckRequestCipherText": {
+      "properties": {
+        "users": {
+          "type": "string"
+        }
+      }
+    },
+    "ActivityRequest": {
+      "properties": {
+        "activity": {
+          "type": "object",
+          "properties": {
+            "sid": {
+              "type": "BigInt"
+            },
+            "pages": {
+              "type": "string"
+            },
+            "types": {
+              "type": "string"
+            },
+            "actions": {
+              "type": "string"
+            },
+            "texts": {
+              "type": "string"
+            },
+            "portal": {
+              "type": "string"
+            },
+            "devices": {
+              "type": "string"
+            },
+            "is_member": {
+              "type": "Bit"
+            },
+            "merchant_id": {
+              "type": "BigInt"
+            },
+            "channel_id": {
+              "type": "BigInt"
+            },
+            "amount": {
+              "type": "BigInt"
+            }
+          }
+        }
+      }
+    },
+    "ErrorLogRequest": {
+      "properties": {
+        "activity": {
+          "type": "object",
+          "properties": {
+            "error_from": {
+              "type": "string"
+            },
+            "error_name": {
+              "type": "string"
+            },
+            "error_func_name": {
+              "type": "string"
+            },
+            "error_code": {
+              "type": "string"
+            },
+            "error_massage": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "ResetPasswordRequest": {
+      "properties": {
+        "resetPassword": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "LocationRequest": {
+      "properties": {
+        "location": {
+          "type": "object",
+          "properties": {
+            "location_name": {
+              "type": "string"
+            },
+            "latitude": {
+              "type": "numeric(10, 8)"
+            },
+            "longitude": {
+              "type": "numeric(11, 8)"
+            },
+            "address": {
+              "type": "string"
+            },
+            "remark": {
+              "type": "string"
+            },
+            "subdistrict": {
+              "type": "string"
+            },
+            "distinct": {
+              "type": "string"
+            },
+            "province": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "address_input": {
+              "type": "string"
+            },
+            "address_output": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "LocationEditRequest": {
+      "properties": {
+        "location": {
+          "type": "object",
+          "properties": {
+            "updated_by": {
+              "type": "bigint"
+            },
+            "shop_id": {
+              "type": "bigint"
+            }
+          }
+        }
+      }
+    },
+    "LocationEditShopIdRequest": {
+      "properties": {
+        "shop": {
+          "type": "object",
+          "properties": {
+            "shop_id": {
+              "type": "bigint"
+            }
+          }
+        }
+      }
+    },
+    "WebhookRequest": {
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "lineId": {
+          "type": "string"
+        }
+      }
+    },
+    "EarnPointRequest": {
+      "properties": {
+        "MID": {
+          "type": "string"
+        },
+        "TID": {
+          "type": "string"
+        },
+        "BATCH_ID": {
+          "type": "string"
+        },
+        "STAND_ID": {
+          "type": "string"
+        },
+        "PRODUCT_CODE": {
+          "type": "string"
+        },
+        "PRODUCT_PRICE": {
+          "type": "string"
+        },
+        "PRODUCT_QUAN": {
+          "type": "string"
+        }
+      }
+    },
+    "PatoisMaxcardRequest": {
+      "properties": {
+        "maxcard": {
+          "type": "object",
+          "properties": {
+            "patois_tel": {
+              "type": "string"
+            },
+            "patois_maxcard_no": {
+              "type": "string"
+            },
+            "patois_status": {
+              "type": "string"
+            },
+            "patois_active": {
+              "type": "bit"
+            }
+          }
+        }
+      }
+    },
+    "OtpRequest": {
+      "properties": {
+        "otp": {
+          "type": "object",
+          "properties": {
+            "otp_to": {
+              "type": "string"
+            },
+            "otp_module": {
+              "type": "string"
+            },
+            "otp_status": {
+              "type": "string"
+            },
+            "patois_maxcard_id": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+
+    "UserCheckResponse": {
+      "properties": {
+        "userId": {
+          "type": "bigint"
+        },
+        "pdpa_isagree": {
+          "type": "bit"
+        }
+      }
+    },
+    "UserLoginRequestCipherText": {
+      "properties": {
+        "users": {
+          "type": "string"
+        }
+      }
+    },
+    "UserLoginResponse": {
+      "properties": {
+        "user": {
+          "type": "object",
+          "properties": {
+            "userId": {
+              "type": "BigInt"
+            },
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "tel": {
+              "type": "string"
+            },
+            "picture": {
+              "type": "string"
+            },
+            "provider": {
+              "type": "string"
+            },
+            "picturePatois": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "groupsid": {
+              "type": "int"
+            },
+            "isBindMaxcard": {
+              "type": "bit"
+            },
+            "patoisMaxcardId": {
+              "type": "int"
+            },
+            "empid": {
+              "type": "string"
+            },
+            "pdpa_version": {
+              "type": "string"
+            },
+            "pdpa_id": {
+              "type": "int"
+            }
+          }
+        },
+        "token": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string"
+            },
+            "token": {
+              "type": "string"
+            },
+            "refreshToken": {
+              "type": "string"
+            }
+          }
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "CheckTokenResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "bit"
+        }
+      }
+    },
+    "ActivityShopHitResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "sid": {
+              "type": "int"
+            },
+            "title": {
+              "type": "string"
+            },
+            "imageSrc": {
+              "type": "string"
+            },
+            "cntHit": {
+              "type": "int"
+            },
+            "score": {
+              "type": "string"
+            },
+            "desc": {
+              "type": "string"
+            },
+            "distance": {
+              "type": "string"
+            },
+            "types": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "ErrorLogResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "int"
+        }
+      }
+    },
+    "CheckVerificationCodeResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "account_verification_id": {
+              "type": "int"
+            },
+            "account_verification_no": {
+              "type": "string"
+            },
+            "account_verification_refcode": {
+              "type": "string"
+            },
+            "account_verification_from": {
+              "type": "int"
+            },
+            "account_verification_to": {
+              "type": "string"
+            },
+            "account_verification_status": {
+              "type": "string"
+            },
+            "account_verification_send_at": {
+              "type": "string"
+            },
+            "account_verification_exprire_date": {
+              "type": "string"
+            },
+            "account_verification_updated_at": {
+              "type": "string"
+            },
+            "is_account_verification_exprire_date": {
+              "type": "bit"
+            }
+          }
+        }
+      }
+    },
+    "CreateVerificationCodeResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "emailId": {
+              "type": "string"
+            },
+            "sendEmail": {
+              "type": "bit"
+            },
+            "AccountVerificationId": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "ResetPasswordResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "emailId": {
+              "type": "string"
+            },
+            "sendEmail": {
+              "type": "bit"
+            },
+            "ResetPasswordId": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "CheckRefCodeResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "reset_password_id": {
+              "type": "int"
+            },
+            "reset_password_refcode": {
+              "type": "string"
+            },
+            "reset_password_from": {
+              "type": "string"
+            },
+            "reset_password_to": {
+              "type": "int"
+            },
+            "reset_password_status": {
+              "type": "string"
+            },
+            "reset_password_send_at": {
+              "type": "string"
+            },
+            "account_verification_exprire_date": {
+              "type": "string"
+            },
+            "reset_password_exprire_date": {
+              "type": "string"
+            },
+            "reset_password_updated_at": {
+              "type": "string"
+            },
+            "is_reset_password_exprire_date": {
+              "type": "bit"
+            }
+          }
+        }
+      }
+    },
+    "FavoriteResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "sid": {
+              "type": "bigint"
+            },
+            "location_id": {
+              "type": "bigint"
+            },
+            "location_name": {
+              "type": "string"
+            },
+            "latitude": {
+              "type": "string"
+            },
+            "longitude": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            },
+            "remark": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "shopType_id": {
+              "type": "string"
+            },
+            "foodType_id": {
+              "type": "string"
+            },
+            "opening_time": {
+              "type": "string"
+            },
+            "closing_time": {
+              "type": "string"
+            },
+            "recommend": {
+              "type": "string"
+            },
+            "images_id": {
+              "type": "bifint"
+            },
+            "image_list": {
+              "type": "string"
+            },
+            "image_url": {
+              "type": "string"
+            },
+            "tel": {
+              "type": "string"
+            },
+            "owner_id": {
+              "type": "bigint"
+            },
+            "user_id": {
+              "type": "bigint"
+            },
+            "parkinglot_id": {
+              "type": "string"
+            },
+            "prices": {
+              "type": "string"
+            },
+            "shopweekday_id": {
+              "type": "int"
+            },
+            "travelBy": {
+              "type": "string"
+            },
+            "link": {
+              "type": "string"
+            },
+            "whatSuggest": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "shopsize_id": {
+              "type": "string"
+            },
+            "shopweekday_id": {
+              "type": "string"
+            },
+            "shopsize": {
+              "type": "string"
+            },
+            "like_id": {
+              "type": "string"
+            },
+            "love": {
+              "type": "string"
+            },
+            "favorite_id": {
+              "type": "string"
+            },
+            "favorite": {
+              "type": "string"
+            },
+            "like_count": {
+              "type": "string"
+            },
+            "view_count": {
+              "type": "string"
+            },
+            "comment_count": {
+              "type": "string"
+            },
+            "cleanliness": {
+              "type": "string"
+            },
+            "delicious": {
+              "type": "string"
+            },
+            "pricing": {
+              "type": "string"
+            },
+            "traveling": {
+              "type": "string"
+            },
+            "expenses": {
+              "type": "string"
+            },
+            "impressed": {
+              "type": "string"
+            },
+            "total": {
+              "type": "string"
+            },
+            "distance": {
+              "type": "string"
+            },
+            "updated_ats": {
+              "type": "string"
+            },
+            "types": {
+              "type": "string"
+            },
+            "distance": {
+              "type": "string"
+            },
+            "desc": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "ViewImageResponse": {
+      "properties": {
+        "Content-Type": {
+          "type": "string"
+        }
+      }
+    },
+    "UploadImageResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "fileName": {
+              "type": "string"
+            },
+            "fileExtensions": {
+              "type": "bit"
+            },
+            "description": {
+              "type": "string"
+            },
+            "imagesId": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "LocationResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "locationId": {
+              "type": "bigint"
+            }
+          }
+        }
+      }
+    },
+    "LocationEditResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "location_id": {
+              "type": "bigint"
+            },
+            "location_name": {
+              "type": "string"
+            },
+            "latitude": {
+              "type": "string"
+            },
+            "longitude": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            },
+            "remark": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "created_by": {
+              "type": "string"
+            },
+            "updated_by": {
+              "type": "string"
+            },
+            "subdistrict": {
+              "type": "string"
+            },
+            "distinct": {
+              "type": "string"
+            },
+            "province": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "address_input": {
+              "type": "string"
+            },
+            "address_output": {
+              "type": "string"
+            },
+            "shopName": {
+              "type": "string"
+            },
+            "importName": {
+              "type": "string"
+            },
+            "shop_id": {
+              "type": "string"
+            },
+            "active": {
+              "type": "bit"
+            }
+          }
+        }
+      }
+    },
+    "LocationEditShopIdResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "location_id": {
+              "type": "bigint"
+            },
+            "location_name": {
+              "type": "string"
+            },
+            "latitude": {
+              "type": "string"
+            },
+            "longitude": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            },
+            "remark": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "created_by": {
+              "type": "string"
+            },
+            "updated_by": {
+              "type": "string"
+            },
+            "subdistrict": {
+              "type": "string"
+            },
+            "distinct": {
+              "type": "string"
+            },
+            "province": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "address_input": {
+              "type": "string"
+            },
+            "address_output": {
+              "type": "string"
+            },
+            "shopName": {
+              "type": "string"
+            },
+            "importName": {
+              "type": "string"
+            },
+            "shop_id": {
+              "type": "string"
+            },
+            "active": {
+              "type": "bit"
+            }
+          }
+        }
+      }
+    },
+    "WebhookResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "MenuProfileResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "menu_profile_id": {
+              "type": "int"
+            },
+            "menu_profile_name": {
+              "type": "string"
+            },
+            "menu_profile_route": {
+              "type": "string"
+            },
+            "menu_profile_icon": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "MaxcardCheckResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "bit"
+        },
+        "result": {
+          "type": "object",
+          "properties": {
+            "patois_maxcard_id": {
+              "type": "int"
+            },
+            "patois_user_id": {
+              "type": "bigint"
+            },
+            "patois_tel": {
+              "type": "string"
+            },
+            "patois_maxcard_no": {
+              "type": "string"
+            },
+            "patois_status": {
+              "type": "string"
+            },
+            "patois_active": {
+              "type": "bit"
+            },
+            "patois_created_at": {
+              "type": "string"
+            },
+            "patois_updated_at": {
+              "type": "string"
+            },
+            "patois_create_by": {
+              "type": "string"
+            },
+            "patois_update_by": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "provider": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "MaxcardInfoResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "patois_maxcard_id": {
+              "type": "int"
+            },
+            "patois_user_id": {
+              "type": "bigint"
+            },
+            "patois_tel": {
+              "type": "string"
+            },
+            "patois_maxcard_no": {
+              "type": "string"
+            },
+            "patois_status": {
+              "type": "string"
+            },
+            "patois_active": {
+              "type": "bit"
+            },
+            "patois_created_at": {
+              "type": "string"
+            },
+            "patois_updated_at": {
+              "type": "string"
+            },
+            "patois_create_by": {
+              "type": "string"
+            },
+            "patois_update_by": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "MaxcardProfileResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "CustomerId": {
+                "type": "string"
+              },
+              "CardNo": {
+                "type": "string"
+              },
+              "CardStatus": {
+                "type": "string"
+              },
+              "ActivateDate": {
+                "type": "string"
+              },
+              "RegisterDate": {
+                "type": "string"
+              },
+              "CitizenId": {
+                "type": "string"
+              },
+              "FirstName": {
+                "type": "string"
+              },
+              "LastName": {
+                "type": "string"
+              },
+              "PhoneNo": {
+                "type": "string"
+              },
+              "CustomerStatus": {
+                "type": "string"
+              },
+              "ActivateShop": {
+                "type": "string"
+              },
+              "CardType": {
+                "type": "string"
+              },
+              "CarType": {
+                "type": "string"
+              },
+              "NormalPoint": {
+                "type": "string"
+              },
+              "SpecialPoint": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "EarnPointResponse": {
+      "properties": {
+        "STATUS": {
+          "type": "object",
+          "properties": {
+            "RESPONSE_CODE": {
+              "type": "string"
+            },
+            "RESPONSE_MESSAGE": {
+              "type": "string"
+            }
+          }
+        },
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "TRANS_ID": {
+              "type": "string"
+            },
+            "TRANS_POINT": {
+              "type": "int"
+            }
+          }
+        }
+      }
+    },
+    "ShopTypeResponse": {
+      "properties": {
+        "shopType_id": {
+          "type": "int"
+        },
+        "shopTypeName": {
+          "type": "string"
+        }
+      }
+    },
+    "ShopSizeResponse": {
+      "properties": {
+        "shopsize_id": {
+          "type": "int"
+        },
+        "shopsize_criteria": {
+          "type": "string"
+        }
+      }
+    },
+    "FoodTypeResponse": {
+      "properties": {
+        "foodType_id": {
+          "type": "int"
+        },
+        "foodTypeName": {
+          "type": "string"
+        }
+      }
+    },
+    "PriceRangResponse": {
+      "properties": {
+        "id": {
+          "type": "int"
+        },
+        "pricerange_text": {
+          "type": "string"
+        }
+      }
+    },
+    "OpenWeekDayResponse": {
+      "properties": {
+        "shopweekday_id": {
+          "type": "int"
+        },
+        "shopweekday_criteria": {
+          "type": "string"
+        }
+      }
+    },
+    "TimerangResponse": {
+      "properties": {
+        "type": "array"
+      }
+    },
+    "NotificationResponse": {
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "notifications_id": {
+                "type": "bigint"
+              },
+              "user_id": {
+                "type": "bigint"
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "types": {
+                "type": "string"
+              },
+              "withs": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "created_at": {
+                "type": "string"
+              },
+              "updated_at": {
+                "type": "string"
+              },
+              "ref_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "CouponResponse": {
+      "properties": {
+        "promo_id": {
+          "type": "int"
+        },
+        "promo_code": {
+          "type": "string"
+        },
+        "promo_name": {
+          "type": "string"
+        },
+        "promo_desc": {
+          "type": "string"
+        },
+        "promo_begin_date": {
+          "type": "string"
+        },
+        "promo_end_date": {
+          "type": "string"
+        },
+        "promo_status": {
+          "type": "string"
+        },
+        "promo_usage_desc": {
+          "type": "string"
+        }
+      }
+    },
+    "EventResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "shop_name": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "EventShopResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "merchant_id": {
+              "type": "bigint"
+            },
+            "shop_id": {
+              "type": "bigint"
+            }
+          }
+        }
+      }
+    },
+    "CheckEventResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "get_promo": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "MatchingResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "PdpaResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "pdpa_id": {
+              "type": "int"
+            },
+            "pdpa_version": {
+              "type": "string"
+            },
+            "pdpa_name": {
+              "type": "string"
+            },
+            "pdpa_header": {
+              "type": "string"
+            },
+            "pdpa_text": {
+              "type": "string"
+            },
+            "pdpa_text_new_update": {
+              "type": "string"
+            },
+            "pdpa_because": {
+              "type": "string"
+            },
+            "pdpa_agree": {
+              "type": "string"
+            },
+            "pdpa_submit": {
+              "type": "string"
+            },
+            "create_date": {
+              "type": "string"
+            },
+            "update_date": {
+              "type": "string"
+            },
+            "start_date": {
+              "type": "string"
+            },
+            "end_date": {
+              "type": "string"
+            },
+            "create_by": {
+              "type": "string"
+            },
+            "update_by": {
+              "type": "string"
+            },
+            "active": {
+              "type": "bit"
+            }
+          }
+        }
+      }
+    },
+    "ReferralResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "refCodeId": {
+              "type": "bigint"
+            },
+            "refCode": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "SearchResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "shop_id": {
+              "type": "bigint"
+            },
+            "shopName": {
+              "type": "string"
+            },
+            "location_name": {
+              "type": "string"
+            },
+            "recommend": {
+              "type": "string"
+            },
+            "tel": {
+              "type": "string"
+            },
+            "remark": {
+              "type": "string"
+            },
+            "latitude": {
+              "type": "string"
+            },
+            "longitude": {
+              "type": "string"
+            },
+            "opening_time": {
+              "type": "string"
+            },
+            "closing_time": {
+              "type": "string"
+            },
+            "types": {
+              "type": "string"
+            },
+            "distance_km": {
+              "type": "string"
+            },
+            "distance": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "CheckOtpResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "otp_id": {
+              "type": "bigint"
+            },
+            "otp_no": {
+              "type": "string"
+            },
+            "otp_refcode": {
+              "type": "string"
+            },
+            "otp_from": {
+              "type": "string"
+            },
+            "otp_to": {
+              "type": "string"
+            },
+            "otp_text": {
+              "type": "string"
+            },
+            "otp_module": {
+              "type": "string"
+            },
+            "otp_status": {
+              "type": "string"
+            },
+            "otp_user_id": {
+              "type": "string"
+            },
+            "patois_maxcard_id": {
+              "type": "string"
+            },
+            "otp_send_at": {
+              "type": "string"
+            },
+            "otp_exprire_date": {
+              "type": "string"
+            },
+            "otp_updated_at": {
+              "type": "string"
+            },
+            "otp_send_by": {
+              "type": "string"
+            },
+            "otp_update_by": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "OtpResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "ShopResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "shop_id": {
+              "type": "bigint"
+            },
+            "latitude": {
+              "type": "string"
+            },
+            "longitude": {
+              "type": "string"
+            },
+            "shopName": {
+              "type": "string"
+            },
+            "image_url": {
+              "type": "string"
+            },
+            "user_id": {
+              "type": "bigint"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "favorite": {
+              "type": "bit"
+            },
+            "total": {
+              "type": "string"
+            },
+            "desc": {
+              "type": "string"
+            },
+            "types": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "UserProfileResponse": {
+      "properties": {
+        "ResponseCode": {
+          "type": "string"
+        },
+        "ResponseMsg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "bigint"
+            },
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "email_verified_at": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "bigint"
+            },
+            "teamName": {
+              "type": "string"
+            },
+            "emp_id": {
+              "type": "string"
+            },
+            "line_id": {
+              "type": "bit"
+            },
+            "profile_pic_line": {
+              "type": "string"
+            },
+            "tel": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+
+    "USERS": {
+      "type": "object",
+      "$ref": "#/definitions/USER"
+    },
+    "UserRegistersRequest": {
+      "type": "object",
+      "$ref": "#/definitions/UserRegisterRequest"
+    },
+    "TokensRequest": {
+      "type": "object",
+      "$ref": "#/definitions/TokenRequest"
+    },
+
+    "UsersCheckRequestCipherText": {
+      "type": "object",
+      "$ref": "#/definitions/UserCheckRequestCipherText"
+    },
+    "ActivitysRequest": {
+      "type": "object",
+      "$ref": "#/definitions/ActivityRequest"
+    },
+    "ErrorLogsRequest": {
+      "type": "object",
+      "$ref": "#/definitions/ErrorLogRequest"
+    },
+    "ResetPasswordsRequest": {
+      "type": "object",
+      "$ref": "#/definitions/ResetPasswordRequest"
+    },
+    "LocationsRequest": {
+      "type": "object",
+      "$ref": "#/definitions/LocationRequest"
+    },
+    "LocationEditsRequest": {
+      "type": "object",
+      "$ref": "#/definitions/LocationEditRequest"
+    },
+    "LocationEditShopIdsRequest": {
+      "type": "object",
+      "$ref": "#/definitions/LocationEditShopIdRequest"
+    },
+    "WebhooksRequest": {
+      "type": "object",
+      "$ref": "#/definitions/WebhookRequest"
+    },
+    "EarnPointsRequest": {
+      "type": "object",
+      "$ref": "#/definitions/EarnPointRequest"
+    },
+    "PatoisMaxcardsRequest": {
+      "type": "object",
+      "$ref": "#/definitions/PatoisMaxcardRequest"
+    },
+    "OtpsRequest": {
+      "type": "object",
+      "$ref": "#/definitions/OtpRequest"
+    },
+
+    "UserChecksResponse": {
+      "type": "object",
+      "$ref": "#/definitions/UserCheckResponse"
+    },
+    "UserLoginsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/UserLoginResponse"
+    },
+    "CheckTokensResponse": {
+      "type": "object",
+      "$ref": "#/definitions/CheckTokenResponse"
+    },
+    "ActivityShopHitsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/ActivityShopHitResponse"
+    },
+    "ErrorLogsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/ErrorLogResponse"
+    },
+    "CheckVerificationCodesResponse": {
+      "type": "object",
+      "$ref": "#/definitions/CheckVerificationCodeResponse"
+    },
+    "CreateVerificationCodesResponse": {
+      "type": "object",
+      "$ref": "#/definitions/CreateVerificationCodeResponse"
+    },
+    "ResetPasswordsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/ResetPasswordResponse"
+    },
+    "CheckRefCodesResponse": {
+      "type": "object",
+      "$ref": "#/definitions/CheckRefCodeResponse"
+    },
+    "FavoritesResponse": {
+      "type": "object",
+      "$ref": "#/definitions/FavoriteResponse"
+    },
+    "ViewImagesResponse": {
+      "type": "object",
+      "$ref": "#/definitions/ViewImageResponse"
+    },
+    "UploadImagesResponse": {
+      "type": "object",
+      "$ref": "#/definitions/UploadImageResponse"
+    },
+    "LocationsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/LocationResponse"
+    },
+    "LocationEditsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/LocationEditResponse"
+    },
+    "LocationEditShopIdsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/LocationEditShopIdResponse"
+    },
+    "WebhooksResponse": {
+      "type": "object",
+      "$ref": "#/definitions/WebhookResponse"
+    },
+    "MenuProfilesResponse": {
+      "type": "object",
+      "$ref": "#/definitions/MenuProfileResponse"
+    },
+    "MaxcardChecksResponse": {
+      "type": "object",
+      "$ref": "#/definitions/MaxcardCheckResponse"
+    },
+    "MaxcardInfosResponse": {
+      "type": "object",
+      "$ref": "#/definitions/MaxcardInfoResponse"
+    },
+    "MaxcardProfilesResponse": {
+      "type": "object",
+      "$ref": "#/definitions/MaxcardProfileResponse"
+    },
+    "EarnPointsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/EarnPointResponse"
+    },
+    "ShopTypesResponse": {
+      "type": "object",
+      "$ref": "#/definitions/ShopTypeResponse"
+    },
+    "ShopSizesResponse": {
+      "type": "object",
+      "$ref": "#/definitions/ShopSizeResponse"
+    },
+    "FoodTypesResponse": {
+      "type": "object",
+      "$ref": "#/definitions/FoodTypeResponse"
+    },
+    "PriceRangsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/PriceRangResponse"
+    },
+    "OpenWeekDaysResponse": {
+      "type": "object",
+      "$ref": "#/definitions/OpenWeekDayResponse"
+    },
+    "TimerangsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/TimerangResponse"
+    },
+    "NotificationsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/NotificationResponse"
+    },
+    "CouponsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/CouponResponse"
+    },
+    "EventsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/EventResponse"
+    },
+    "EventShopsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/EventShopResponse"
+    },
+    "CheckEventsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/CheckEventResponse"
+    },
+    "MatchingsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/MatchingResponse"
+    },
+    "PdpasResponse": {
+      "type": "object",
+      "$ref": "#/definitions/PdpaResponse"
+    },
+    "ReferralsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/ReferralResponse"
+    },
+    "SearchsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/SearchResponse"
+    },
+    "CheckOtpsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/CheckOtpResponse"
+    },
+    "OtpsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/OtpResponse"
+    },
+    "ShopsResponse": {
+      "type": "object",
+      "$ref": "#/definitions/ShopResponse"
+    },
+    "UserProfilesResponse": {
+      "type": "object",
+      "$ref": "#/definitions/UserProfileResponse"
+    }
+  }
+}

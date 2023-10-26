@@ -1,0 +1,1 @@
+SELECT * FROM [dbo].[patois_maxcard] WITH (NOLOCK)  WHERE  patois_user_id = @user_id AND  patois_status = 'Completed'

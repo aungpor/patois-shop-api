@@ -1,0 +1,1 @@
+DELETE FROM patois_bind_tag WHERE ref_id = @ref_id and ref_type = @ref_type;

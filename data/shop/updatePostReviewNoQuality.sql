@@ -1,0 +1,3 @@
+UPDATE dbo.patois_post_review_no_quality
+SET post_review_quality_id=@post_review_quality_id
+WHERE check_key=@check_key

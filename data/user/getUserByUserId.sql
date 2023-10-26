@@ -1,0 +1,1 @@
+select * from dbo.users WITH (NOLOCK)  where id = @userId

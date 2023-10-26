@@ -1,0 +1,1 @@
+SELECT count(*) as total FROM patois_content where status = @status

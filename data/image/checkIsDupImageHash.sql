@@ -1,0 +1,1 @@
+SELECT TOP 1 image_hash_id FROM patois_image_hash WITH (NOLOCK)  WHERE fileName = @fileName 

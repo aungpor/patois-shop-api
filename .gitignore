@@ -1,0 +1,17 @@
+node_modules
+.DS_Store
+.env
+.vscode/launch.json
+wongnok_/group/*
+wongnok_/profile/*
+wongnok_/pt/*
+wongnok_/rwn/*
+wongnok_/wn/*
+yarn.lock
+
+!wongnok_/group/readme.md
+!wongnok_/profile/readme.md
+!wongnok_/profile/readme.md
+!wongnok_/pt/readme.md
+!wongnok_/rwn/readme.md
+!wongnok_/wn/readme.md
